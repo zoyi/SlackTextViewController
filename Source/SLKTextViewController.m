@@ -35,6 +35,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
 // A hairline displayed on top of the auto-completion view, to better separate the content from the control.
 @property (nonatomic, strong) UIView *autoCompletionHairline;
+@property (nonatomic, strong) UIView *autoCompletionBackgroundView;
+@property (nonatomic, strong) UITapGestureRecognizer *backgroundTapGesture;
 
 // Auto-Layout height constraints used for updating their constants
 @property (nonatomic, strong) NSLayoutConstraint *scrollViewHC;
@@ -68,6 +70,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 @synthesize autoCompleting = _autoCompleting;
 @synthesize scrollViewProxy = _scrollViewProxy;
 @synthesize presentedInPopover = _presentedInPopover;
+@synthesize autoCompletionBackgroundView = _autoCompletionBackgroundView;
 
 #pragma mark - Initializer
 
@@ -174,6 +177,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     
     [self.view addSubview:self.scrollViewProxy];
     [self.view addSubview:self.autoCompletionView];
+    [self.view addSubview:self.autoCompletionBackgroundView];
     [self.view addSubview:self.typingIndicatorProxyView];
     [self.view addSubview:self.textInputbar];
     
@@ -301,6 +305,26 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         [_autoCompletionView addSubview:_autoCompletionHairline];
     }
     return _autoCompletionView;
+}
+
+- (UIView *)autoCompletionBackgroundView
+{
+    if (!_autoCompletionBackgroundView) {
+        _autoCompletionBackgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+        _autoCompletionBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
+        _autoCompletionBackgroundView.backgroundColor = [UIColor blackColor];
+        _autoCompletionBackgroundView.alpha = 0.3;
+        _autoCompletionBackgroundView.userInteractionEnabled = YES;
+
+        _backgroundTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(slk_didTapScrollView:)];
+        _backgroundTapGesture.numberOfTapsRequired = 1;
+        _backgroundTapGesture.delegate = self;
+
+        [_autoCompletionBackgroundView addGestureRecognizer:self.backgroundTapGesture];
+        [_autoCompletionBackgroundView setHidden:YES];
+    }
+
+    return _autoCompletionBackgroundView;
 }
 
 - (SLKTextInputbar *)textInputbar
@@ -1664,7 +1688,9 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     [self slk_enableTypingSuggestionIfNeeded];
     
     CGFloat viewHeight = show ? [self heightForAutoCompletionView] : 0.0;
-    
+
+    [self.autoCompletionBackgroundView setHidden:!show];
+
     if (self.autoCompletionViewHC.constant == viewHeight) {
         return;
     }
@@ -1682,7 +1708,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     if (SLK_IS_IPHONE && viewHeight > contentViewHeight) {
         viewHeight = contentViewHeight;
     }
-    
+
     self.autoCompletionViewHC.constant = viewHeight;
     
     [self.view slk_animateLayoutIfNeededWithBounce:self.bounces
@@ -2198,7 +2224,10 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     else if ([gesture isEqual:self.verticalPanGesture]) {
         return self.keyboardPanningEnabled && ![self ignoreTextInputbarAdjustment];
     }
-    
+    else if ([gesture isEqual:self.backgroundTapGesture]) {
+        return YES;
+    }
+
     return NO;
 }
 
@@ -2225,12 +2254,14 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 - (void)slk_setupViewConstraints
 {
     NSDictionary *views = @{@"scrollView": self.scrollViewProxy,
+                            @"backgroundView": self.autoCompletionBackgroundView,
                             @"autoCompletionView": self.autoCompletionView,
                             @"typingIndicatorView": self.typingIndicatorProxyView,
                             @"textInputbar": self.textInputbar,
                             };
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView(0@750)][typingIndicatorView(0)]-0@999-[textInputbar(0)]|" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundView(>=0)][autoCompletionView(0)][typingIndicatorView]" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[autoCompletionView(0@750)][typingIndicatorView]" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[autoCompletionView]|" options:0 metrics:nil views:views]];
