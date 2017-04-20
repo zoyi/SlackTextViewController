@@ -579,6 +579,12 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
  */
 - (void)registerClassForTypingIndicatorView:(Class _Nullable)aClass;
 
+/**
+ Configure bottom margin.
+
+ @param The margin to configure
+ */
+- (void)adjustBottomMargin:(CGFloat)margin;
 
 #pragma mark - Delegate Methods Requiring Super
 ///------------------------------------------------

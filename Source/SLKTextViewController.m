@@ -1982,6 +1982,9 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     self.typingIndicatorViewClass = aClass;
 }
 
+- (void)adjustBottomMargin:(CGFloat)margin {
+    self.keyboardHC.constant = margin;
+}
 
 #pragma mark - UITextViewDelegate Methods
 
