@@ -44,6 +44,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 @property (nonatomic, strong) NSLayoutConstraint *typingIndicatorViewHC;
 @property (nonatomic, strong) NSLayoutConstraint *autoCompletionViewHC;
 @property (nonatomic, strong) NSLayoutConstraint *keyboardHC;
+@property (nonatomic, assign) SLKInputBarState barState;
 
 // YES if the user is moving the keyboard with a gesture
 @property (nonatomic, assign, getter = isMovingKeyboard) BOOL movingKeyboard;
@@ -71,6 +72,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 @synthesize scrollViewProxy = _scrollViewProxy;
 @synthesize presentedInPopover = _presentedInPopover;
 @synthesize autoCompletionBackgroundView = _autoCompletionBackgroundView;
+@synthesize menuAccesoryView = _menuAccesoryView;
 
 #pragma mark - Initializer
 
@@ -450,7 +452,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         }
     }
     
-    return 0.0;
+    CGFloat height = SLK_IS_IPHONE6PLUS ? 231 : 221;
+    return self.menuAccesoryView == nil ? 0.0 : height;
 }
 
 - (CGFloat)slk_appropriateScrollViewHeight
@@ -617,8 +620,57 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
 #pragma mark - Public & Subclassable Methods
 
+- (void)setMenuAccesoryView:(UIView *)menuAccesoryView
+{
+    //remove previous view from super view if exist
+    [_menuAccesoryView removeFromSuperview];
+    //add view
+    [self.view addSubview:menuAccesoryView];
+    _menuAccesoryView = menuAccesoryView;
+}
+
+- (void)presentMenuAccessoryView:(BOOL)animated
+{
+    if(_menuAccesoryView == nil ||
+        _menuAccesoryView.superview == nil) {
+        return;
+    }
+
+    [UIView setAnimationsEnabled:NO];
+
+    [self dismissKeyboard:NO];
+    [self.textView setUserInteractionEnabled:NO];
+    [self slk_dismissTextInputbarIfNeeded];
+    self.barState = _textInputbar.barState;
+
+    [UIView setAnimationsEnabled:YES];
+}
+
+- (void)dismissMenuAccessoryView:(BOOL)animated
+{
+    [UIView setAnimationsEnabled:NO];
+
+    [self.menuAccesoryView removeFromSuperview];
+    self.menuAccesoryView = nil;
+
+    _textInputbar.barState = self.barState;
+    [_textInputbar.rightButton setEnabled:![self.textView.text isEqualToString:@""]];
+
+    if(self.keyboardStatus != SLKKeyboardStatusDidShow &&
+       self.keyboardStatus != SLKKeyboardStatusWillShow) {
+        self.keyboardHC.constant = 0;
+    }
+
+    self.scrollViewHC.constant = [self slk_appropriateScrollViewHeight];
+
+    [UIView setAnimationsEnabled:YES];
+}
+
 - (void)presentKeyboard:(BOOL)animated
 {
+    [self.leftButton setSelected:NO];
+    [self.textView setUserInteractionEnabled:YES];
+
     // Skips if already first responder
     if ([self.textView isFirstResponder]) {
         return;
@@ -636,6 +688,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
 - (void)dismissKeyboard:(BOOL)animated
 {
+    [self.textView setUserInteractionEnabled:NO];
     // Dismisses the keyboard from any first responder in the window.
     if (![self.textView isFirstResponder] && self.keyboardHC.constant > 0) {
         [self.view.window endEditing:NO];
@@ -764,7 +817,10 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         // Clears the text and the undo manager
         [self.textView slk_clearText:YES];
     }
-    
+
+    // reset left button
+    [self.leftButton setSelected:NO];
+
     // Clears cache
     [self clearCachedText];
 }
