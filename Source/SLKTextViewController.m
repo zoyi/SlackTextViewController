@@ -163,6 +163,9 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.extendedLayoutIncludesOpaqueBars = YES;
+
+    self.textInputBarLRC = 0;
+    self.textInputBarBC = 0;
 }
 
 
@@ -434,6 +437,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     // requiring to adjust the text input bottom margin
     if (keyboardHeight < bottomMargin) {
         keyboardHeight = bottomMargin;
+    } else {
+        keyboardHeight += self.textInputBarBC;
     }
     
     return keyboardHeight;
@@ -658,7 +663,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
     if(self.keyboardStatus != SLKKeyboardStatusDidShow &&
        self.keyboardStatus != SLKKeyboardStatusWillShow) {
-        self.keyboardHC.constant = 0;
+        self.keyboardHC.constant = self.textInputBarBC;
     }
 
     self.scrollViewHC.constant = [self slk_appropriateScrollViewHeight];
@@ -2325,7 +2330,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[autoCompletionView]|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[typingIndicatorView]|" options:0 metrics:nil views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[textInputbar]|" options:0 metrics:nil views:views]];
+    NSString *format = [NSString stringWithFormat:@"H:|-%f-[textInputbar]-%f-|", self.textInputBarLRC, self.textInputBarLRC];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:views]];
     
     self.scrollViewHC = [self.view slk_constraintForAttribute:NSLayoutAttributeHeight firstItem:self.scrollViewProxy secondItem:nil];
     self.autoCompletionViewHC = [self.view slk_constraintForAttribute:NSLayoutAttributeHeight firstItem:self.autoCompletionView secondItem:nil];

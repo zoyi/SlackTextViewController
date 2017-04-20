@@ -583,6 +583,15 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
  */
 - (void)registerClassForTypingIndicatorView:(Class _Nullable)aClass;
 
+
+#pragma mark - Layout Customization
+///------------------------------------------------
+/// @name Layout Customization
+///------------------------------------------------
+
+@property (nonatomic, assign) CGFloat textInputBarLRC;
+@property (nonatomic, assign) CGFloat textInputBarBC;
+
 /**
  Configure bottom margin.
 
