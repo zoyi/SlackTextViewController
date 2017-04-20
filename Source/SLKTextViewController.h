@@ -121,7 +121,7 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 @property (nonatomic, readonly) SLKTextView *textView;
 @property (nonatomic, readonly) UIButton *leftButton;
 @property (nonatomic, readonly) UIButton *rightButton;
-
+@property (nonatomic, weak) UIView *menuAccesoryView;
 
 #pragma mark - Initialization
 ///------------------------------------------------
@@ -181,6 +181,10 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
  */
 + (UICollectionViewLayout *)collectionViewLayoutForCoder:(NSCoder *)decoder;
 
+#pragma mark - Menu Accessory View
+
+- (void)presentMenuAccessoryView:(BOOL)animated;
+- (void)dismissMenuAccessoryView:(BOOL)animated;
 
 #pragma mark - Keyboard Handling
 ///------------------------------------------------
