@@ -46,6 +46,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 @property (nonatomic, strong) NSLayoutConstraint *keyboardHC;
 @property (nonatomic, assign) SLKInputBarState barState;
 
+@property (nonatomic, assign) CGFloat contentYOffset;
+
 // YES if the user is moving the keyboard with a gesture
 @property (nonatomic, assign, getter = isMovingKeyboard) BOOL movingKeyboard;
 
@@ -1446,6 +1448,13 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     // Skips if it's the current status
     if (self.keyboardStatus == status) {
         return;
+    }
+
+    BOOL shouldUpdateOffset = self.keyboardHC.constant == self.textInputBarBC &&
+      self.menuAccesoryView == nil;
+    if (status == SLKKeyboardStatusWillShow && shouldUpdateOffset) {
+        CGFloat offset = SLK_IS_IPHONE6PLUS ? 231 : 221;
+        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + offset)];
     }
     
     // Programatically stops scrolling before updating the view constraints (to avoid scrolling glitch).
