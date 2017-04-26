@@ -452,8 +452,9 @@ SLKPastableMediaType SLKPastableMediaTypeFromNSString(NSString *string)
     
     self.autocorrectionType = enabled ? UITextAutocorrectionTypeDefault : UITextAutocorrectionTypeNo;
     self.spellCheckingType = enabled ? UITextSpellCheckingTypeDefault : UITextSpellCheckingTypeNo;
-    
-    [self refreshFirstResponder];
+  
+    //NOTE: this cause to resign textview responder which we don't want to
+    //[self refreshFirstResponder];
 }
 
 - (void)setContentOffset:(CGPoint)contentOffset
