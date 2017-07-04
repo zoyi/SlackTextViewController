@@ -1,4 +1,4 @@
-//
+://
 //  SlackTextViewController
 //  https://github.com/slackhq/SlackTextViewController
 //
@@ -460,7 +460,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     }
     
     CGFloat height = SLK_IS_IPHONE6PLUS ? 231 : 221;
-    return self.menuAccesoryView == nil ? 0.0 : height;
+    return self.menuAccesoryView == nil ? self.textInputBarBC : height;
 }
 
 - (CGFloat)slk_appropriateScrollViewHeight
