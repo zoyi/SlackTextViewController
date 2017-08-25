@@ -44,7 +44,6 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 @property (nonatomic, strong) NSLayoutConstraint *typingIndicatorViewHC;
 @property (nonatomic, strong) NSLayoutConstraint *autoCompletionViewHC;
 @property (nonatomic, strong) NSLayoutConstraint *keyboardHC;
-@property (nonatomic, assign) SLKInputBarState barState;
 
 @property (nonatomic, assign) CGFloat contentYOffset;
 
@@ -585,6 +584,12 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     _autoCompleting = autoCompleting;
     
     self.scrollViewProxy.scrollEnabled = !autoCompleting;
+}
+
+- (void)setBarState:(SLKInputBarState)barState
+{
+    _barState = barState;
+    _textInputbar.barState = barState;
 }
 
 - (void)setInverted:(BOOL)inverted
