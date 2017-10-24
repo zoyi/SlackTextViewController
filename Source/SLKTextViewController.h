@@ -150,7 +150,7 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 /**
  Initializes a text view controller to manage an arbitraty scroll view. The caller is responsible for configuration of the scroll view, including wiring the delegate.
  
- @param a UISCrollView to be used as the main content area.
+ @param scrollView UISCrollView to be used as the main content area.
  @return An initialized SLKTextViewController object or nil if the object could not be created.
  */
 - (instancetype __nullable)initWithScrollView:(UIScrollView *)scrollView;
@@ -256,7 +256,7 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
  You can override this method to perform additional tasks associated with text changes.
  You MUST call super at some point in your implementation.
  
- @param If YES, the text input bar will be resized using an animation.
+ @param animated If YES, the text input bar will be resized using an animation.
  */
 - (void)textDidUpdate:(BOOL)animated NS_REQUIRES_SUPER;
 
@@ -596,7 +596,7 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 /**
  Configure bottom margin.
 
- @param The margin to configure
+ @param margin The margin to configure
  */
 - (void)adjustBottomMargin:(CGFloat)margin;
 

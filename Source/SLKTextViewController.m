@@ -797,7 +797,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     }
     
     if (self.textView.selectedRange.length > 0) {
-        if (self.isAutoCompleting && [self shouldProcessTextForAutoCompletion:self.textView.text]) {
+        if (self.isAutoCompleting && [self shouldProcessTextForAutoCompletion]) {
             [self cancelAutoCompletion];
         }
         return;
@@ -1828,7 +1828,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     
     self.textView.selectedRange = NSMakeRange(insertionRange.location, 0);
     
-    [self.textView slk_scrollToCaretPositonAnimated:NO];
+    [self.textView slk_scrollToCaretPositonAnimated:YES];
     
     [self cancelAutoCompletion];
 }
@@ -1843,7 +1843,9 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 {
     NSString *text = self.textView.text;
     
-    if ((!self.isAutoCompleting && text.length == 0) || self.isTransitioning || ![self shouldProcessTextForAutoCompletion:text]) {
+    if ((!self.isAutoCompleting && text.length == 0) ||
+        self.isTransitioning ||
+        ![self shouldProcessTextForAutoCompletion]) {
         return;
     }
     
