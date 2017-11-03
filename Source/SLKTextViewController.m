@@ -247,6 +247,11 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     [super viewDidLayoutSubviews];
 }
 
+- (void)viewSafeAreaInsetsDidChange
+{
+    [super viewSafeAreaInsetsDidChange];
+    [self slk_updateViewConstraints];
+}
 
 #pragma mark - Getters
 
@@ -457,9 +462,16 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
             return CGRectGetHeight(tabBar.frame);
         }
     }
-    
-    CGFloat height = SLK_IS_IPHONE6PLUS ? 231 : 221;
-    return self.menuAccesoryView == nil ? self.textInputBarBC : height;
+
+    CGFloat padding = SLKKeyWindowBounds().size.height <= 736.0 ? 231 : 221;
+    CGFloat height = self.menuAccesoryView == nil ? 0.0 : padding;
+    // A bottom margin is required for iPhone X
+    if (@available(iOS 11.0, *)) {
+        if (!self.textInputbar.isHidden) {
+            return self.view.safeAreaInsets.bottom + height;
+        }
+    }
+    return height;
 }
 
 - (CGFloat)slk_appropriateScrollViewHeight
@@ -969,7 +981,10 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     }
     
     _textInputbar.hidden = hidden;
-    
+    if (@available(iOS 11.0, *)) {
+        [self viewSafeAreaInsetsDidChange];
+    }
+  
     __weak typeof(self) weakSelf = self;
     
     void (^animations)() = ^void(){
@@ -2337,7 +2352,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
                             @"backgroundView": self.autoCompletionBackgroundView,
                             @"autoCompletionView": self.autoCompletionView,
                             @"typingIndicatorView": self.typingIndicatorProxyView,
-                            @"textInputbar": self.textInputbar,
+                            @"textInputbar": self.textInputbar
                             };
     
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scrollView(0@750)][typingIndicatorView(0)]-0@999-[textInputbar(0)]|" options:0 metrics:nil views:views]];
