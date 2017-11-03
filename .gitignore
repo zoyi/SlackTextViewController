@@ -17,7 +17,7 @@ DerivedData
 *.hmap
 .gutter.json
 Carthage/
-
+Examples/Pods
 SlackTextViewController/Pods
 SlackTextViewController/Podfile.lock
 SlackTextViewController/*.xcworkspace
