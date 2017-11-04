@@ -464,7 +464,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     }
 
     CGFloat padding = SLKKeyWindowBounds().size.height <= 736.0 ? 231 : 221;
-    CGFloat height = self.menuAccesoryView == nil ? 0.0 : padding;
+    CGFloat height = self.menuAccesoryView == nil ? self.textInputBarBC : padding;
     // A bottom margin is required for iPhone X
     if (@available(iOS 11.0, *)) {
         if (!self.textInputbar.isHidden) {
@@ -981,10 +981,6 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     }
     
     _textInputbar.hidden = hidden;
-    if (@available(iOS 11.0, *)) {
-        [self viewSafeAreaInsetsDidChange];
-    }
-  
     __weak typeof(self) weakSelf = self;
     
     void (^animations)() = ^void(){
@@ -992,6 +988,9 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         weakSelf.textInputbarHC.constant = hidden ? 0.0 : weakSelf.textInputbar.appropriateHeight;
         
         [weakSelf.view layoutIfNeeded];
+        if (@available(iOS 11.0, *)) {
+          [self viewSafeAreaInsetsDidChange];
+        }
     };
     
     void (^completion)(BOOL finished) = ^void(BOOL finished){
