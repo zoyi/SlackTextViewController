@@ -463,7 +463,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         }
     }
 
-    CGFloat padding = SLKKeyWindowBounds().size.height <= 736.0 ? 231 : 221;
+    CGFloat padding = SLK_IS_IPHONE6PLUS ? 231 : 221;
     CGFloat height = self.menuAccesoryView == nil ? self.textInputBarBC : padding;
     // A bottom margin is required for iPhone X
     if (@available(iOS 11.0, *)) {
@@ -672,6 +672,11 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
 - (void)dismissMenuAccessoryView:(BOOL)animated
 {
+    if(_menuAccesoryView == nil ||
+       _menuAccesoryView.superview == nil) {
+      return;
+    }
+  
     [UIView setAnimationsEnabled:NO];
 
     [self.menuAccesoryView removeFromSuperview];
@@ -682,11 +687,10 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
     if(self.keyboardStatus != SLKKeyboardStatusDidShow &&
        self.keyboardStatus != SLKKeyboardStatusWillShow) {
-        self.keyboardHC.constant = self.textInputBarBC;
+        self.keyboardHC.constant = [self slk_appropriateBottomMargin];
     }
 
-    self.scrollViewHC.constant = [self slk_appropriateScrollViewHeight];
-
+    [self slk_refreshViewContraints];
     [UIView setAnimationsEnabled:YES];
 }
 
@@ -989,7 +993,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         
         [weakSelf.view layoutIfNeeded];
         if (@available(iOS 11.0, *)) {
-          [self viewSafeAreaInsetsDidChange];
+          [self slk_refreshViewContraints];
         }
     };
     
@@ -2074,7 +2078,13 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 }
 
 - (void)adjustBottomMargin:(CGFloat)margin {
-    self.keyboardHC.constant = margin;
+    if (@available(iOS 11.0, *)) {
+      self.keyboardHC.constant = self.view.safeAreaInsets.bottom + margin;
+    } else {
+      self.keyboardHC.constant = margin;
+    }
+  
+    [self slk_refreshViewContraints];
 }
 
 #pragma mark - UITextViewDelegate Methods
@@ -2385,6 +2395,17 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     [super updateViewConstraints];
 }
 
+- (void)slk_refreshViewContraints
+{
+  self.textInputbarHC.constant = _textInputbar.hidden ? 0 : self.textInputbar.appropriateHeight;
+  self.scrollViewHC.constant = [self slk_appropriateScrollViewHeight];
+  
+  if (_textInputbar.isEditing) {
+    self.textInputbarHC.constant += self.textInputbar.editorContentViewHeight;
+  }
+  
+  [super updateViewConstraints];
+}
 
 #pragma mark - Keyboard Command registration
 
