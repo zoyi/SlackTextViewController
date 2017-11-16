@@ -418,6 +418,7 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 
 /** The table view used to display autocompletion results. */
 @property (nonatomic, readonly) UITableView *autoCompletionView;
+@property (nonatomic, strong) UIColor *autoCompletionHairColor;
 
 /** YES if the autocompletion mode is active. */
 @property (nonatomic, readonly, getter = isAutoCompleting) BOOL autoCompleting;

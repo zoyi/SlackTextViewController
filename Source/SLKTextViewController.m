@@ -74,6 +74,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 @synthesize presentedInPopover = _presentedInPopover;
 @synthesize autoCompletionBackgroundView = _autoCompletionBackgroundView;
 @synthesize menuAccesoryView = _menuAccesoryView;
+@synthesize autoCompletionHairColor = _autoCompletionHairColor;
 
 #pragma mark - Initializer
 
@@ -336,6 +337,14 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     }
 
     return _autoCompletionBackgroundView;
+}
+
+- (void)setAutoCompletionHairColor:(UIColor *)autoCompletionHairColor
+{
+    if (_autoCompletionHairline) {
+      _autoCompletionHairline.backgroundColor = autoCompletionHairColor;
+    }
+    _autoCompletionHairColor = autoCompletionHairColor;
 }
 
 - (SLKTextInputbar *)textInputbar
@@ -2368,6 +2377,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[backgroundView(>=0)][autoCompletionView(0)][typingIndicatorView]" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0)-[autoCompletionView(0@750)][typingIndicatorView]" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics:nil views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[backgroundView]|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[autoCompletionView]|" options:0 metrics:nil views:views]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[typingIndicatorView]|" options:0 metrics:nil views:views]];
     NSString *format = [NSString stringWithFormat:@"H:|-%f-[textInputbar]-%f-|", self.textInputBarLRC, self.textInputBarLRC];
