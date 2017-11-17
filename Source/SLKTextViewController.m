@@ -476,9 +476,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     CGFloat height = self.menuAccesoryView == nil ? self.textInputBarBC : padding;
     // A bottom margin is required for iPhone X
     if (@available(iOS 11.0, *)) {
-        if (!self.textInputbar.isHidden) {
-            return self.view.safeAreaInsets.bottom + height;
-        }
+        return self.view.safeAreaInsets.bottom + height;
     }
     return height;
 }
