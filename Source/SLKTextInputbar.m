@@ -107,7 +107,7 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
     [self slk_registerTo:self.leftButton.imageView forSelector:@selector(image)];
     [self slk_registerTo:self.rightButton.imageView forSelector:@selector(image)];
     [self slk_registerTo:self.rightButton.titleLabel forSelector:@selector(font)];
-
+    [self slk_registerTo:self.rightButton.titleLabel forSelector:@selector(text)];
     self.barState = SLKInputBarStateNormal;
 }
 
@@ -790,6 +790,10 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
         [self slk_updateConstraintConstants];
       }
     }
+    else if ([object isEqual:self.rightButton.titleLabel] && [keyPath isEqualToString:NSStringFromSelector(@selector(text))]) {
+      
+      [self slk_updateConstraintConstants];
+    }
     else if ([object isEqual:self.rightButton.titleLabel] && [keyPath isEqualToString:NSStringFromSelector(@selector(font))]) {
         
         [self slk_updateConstraintConstants];
@@ -829,6 +833,7 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
     [self slk_unregisterFrom:self.leftButton.imageView forSelector:@selector(image)];
     [self slk_unregisterFrom:self.rightButton.imageView forSelector:@selector(image)];
     [self slk_unregisterFrom:self.rightButton.titleLabel forSelector:@selector(font)];
+    [self slk_unregisterFrom:self.rightButton.titleLabel forSelector:@selector(text)];
 }
 
 @end
