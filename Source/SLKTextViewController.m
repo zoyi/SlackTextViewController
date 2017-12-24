@@ -251,7 +251,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 - (void)viewSafeAreaInsetsDidChange
 {
     [super viewSafeAreaInsetsDidChange];
-    [self slk_updateViewConstraints];
+    [self slk_refreshViewContraints];
 }
 
 #pragma mark - Getters
