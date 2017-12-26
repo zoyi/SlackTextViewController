@@ -44,7 +44,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 @property (nonatomic, strong) NSLayoutConstraint *typingIndicatorViewHC;
 @property (nonatomic, strong) NSLayoutConstraint *autoCompletionViewHC;
 @property (nonatomic, strong) NSLayoutConstraint *keyboardHC;
-
+@property (nonatomic, assign) CGFloat bottomMargin;
 @property (nonatomic, assign) CGFloat contentYOffset;
 
 // YES if the user is moving the keyboard with a gesture
@@ -251,7 +251,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 - (void)viewSafeAreaInsetsDidChange
 {
     [super viewSafeAreaInsetsDidChange];
-    [self slk_refreshViewContraints];
+    [self slk_updateViewConstraints];
 }
 
 #pragma mark - Getters
@@ -452,8 +452,6 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     // requiring to adjust the text input bottom margin
     if (keyboardHeight < bottomMargin) {
         keyboardHeight = bottomMargin;
-    } else {
-        keyboardHeight += self.textInputBarBC;
     }
     
     return keyboardHeight;
@@ -476,9 +474,9 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     CGFloat height = self.menuAccesoryView == nil ? self.textInputBarBC : padding;
     // A bottom margin is required for iPhone X
     if (@available(iOS 11.0, *)) {
-        return self.view.safeAreaInsets.bottom + height;
+        return self.view.safeAreaInsets.bottom + height + _bottomMargin;
     }
-    return height;
+    return height + _bottomMargin;
 }
 
 - (CGFloat)slk_appropriateScrollViewHeight
@@ -2085,13 +2083,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 }
 
 - (void)adjustBottomMargin:(CGFloat)margin {
-    if (@available(iOS 11.0, *)) {
-      self.keyboardHC.constant = self.view.safeAreaInsets.bottom + margin;
-    } else {
-      self.keyboardHC.constant = margin;
-    }
-  
-    [self slk_refreshViewContraints];
+    _bottomMargin = margin;
+    [self slk_updateViewConstraints];
 }
 
 #pragma mark - UITextViewDelegate Methods
@@ -2392,7 +2385,7 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
 - (void)slk_updateViewConstraints
 {
-    self.textInputbarHC.constant = self.textInputbar.minimumInputbarHeight;
+    self.textInputbarHC.constant = _textInputbar.hidden ? 0 : self.textInputbar.minimumInputbarHeight;
     self.scrollViewHC.constant = [self slk_appropriateScrollViewHeight];
     self.keyboardHC.constant = [self slk_appropriateKeyboardHeightFromRect:CGRectNull];
     
@@ -2405,14 +2398,14 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
 - (void)slk_refreshViewContraints
 {
-  self.textInputbarHC.constant = _textInputbar.hidden ? 0 : self.textInputbar.appropriateHeight;
-  self.scrollViewHC.constant = [self slk_appropriateScrollViewHeight];
+    self.textInputbarHC.constant = _textInputbar.hidden ? 0 : self.textInputbar.appropriateHeight;
+    self.scrollViewHC.constant = [self slk_appropriateScrollViewHeight];
   
-  if (_textInputbar.isEditing) {
-    self.textInputbarHC.constant += self.textInputbar.editorContentViewHeight;
-  }
+    if (_textInputbar.isEditing) {
+      self.textInputbarHC.constant += self.textInputbar.editorContentViewHeight;
+    }
   
-  [super updateViewConstraints];
+    [super updateViewConstraints];
 }
 
 #pragma mark - Keyboard Command registration
