@@ -452,6 +452,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     // requiring to adjust the text input bottom margin
     if (keyboardHeight < bottomMargin) {
         keyboardHeight = bottomMargin;
+    } else {
+      keyboardHeight += self.textInputBarBC;
     }
     
     return keyboardHeight;
