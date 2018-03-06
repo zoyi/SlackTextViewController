@@ -253,6 +253,21 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
     return _editorContentView;
 }
 
+- (void)hideAllButtons {
+  [self hideLeftButton];
+  [self hideRightButton];
+}
+
+- (void)hideLeftButton {
+  [self.leftButton setHidden:YES];
+  self.leftButtonWC.constant = 0;
+}
+
+- (void)hideRightButton {
+  [self.rightButton setHidden:YES];
+  self.rightButtonWC.constant = 0;
+}
+
 - (UILabel *)editorTitle
 {
     if (!_editorTitle) {
@@ -732,7 +747,7 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
             self.leftButtonBottomMarginC.constant = roundf((self.intrinsicContentSize.height - leftButtonSize.height) / 2.0) + self.slk_contentViewHeight / 2.0;
         }
         
-        self.leftButtonWC.constant = roundf(leftButtonSize.width);
+        self.leftButtonWC.constant = self.leftButton.isHidden ? 0 : roundf(leftButtonSize.width);
         self.leftMarginWC.constant = (leftButtonSize.width > 0) ? self.contentInset.left : zero;
         
         self.rightButtonWC.constant = [self slk_appropriateRightButtonWidth];
