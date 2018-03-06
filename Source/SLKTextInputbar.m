@@ -268,6 +268,13 @@ NSString * const SLKTextInputbarDidMoveNotification =   @"SLKTextInputbarDidMove
   self.rightButtonWC.constant = 0;
 }
 
+- (void)setButtonsHidden:(BOOL)hidden {
+  [self.rightButton setHidden:hidden];
+  [self.leftButton setHidden:hidden];
+  
+  [self slk_updateConstraintConstants];
+}
+
 - (UILabel *)editorTitle
 {
     if (!_editorTitle) {

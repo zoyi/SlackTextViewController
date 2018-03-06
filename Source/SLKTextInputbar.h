@@ -80,6 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)hideLeftButton;
 - (void)hideRightButton;
 - (void)hideAllButtons;
+- (void)setButtonsHidden:(BOOL)hidden;
 
 #pragma mark - Initialization
 ///------------------------------------------------
