@@ -162,7 +162,8 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     self.keyboardPanningEnabled = YES;
     self.shouldClearTextAtRightButtonPress = YES;
     self.shouldScrollToBottomAfterKeyboardShows = NO;
-    
+    self.alwaysEnableRightButton = NO;
+  
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.extendedLayoutIncludesOpaqueBars = YES;
 
@@ -833,12 +834,12 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 - (BOOL)canPressRightButton
 {
     NSString *text = [self.textView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
+  
     if (text.length > 0 && ![_textInputbar limitExceeded]) {
         return YES;
     }
-    
-    return NO;
+  
+    return self.alwaysEnableRightButton;
 }
 
 - (void)didPressLeftButton:(id)sender

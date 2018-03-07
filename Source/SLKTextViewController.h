@@ -435,6 +435,7 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface SLKTextViewController : UIViewController 
 /** An array containing all the registered prefix strings for autocompletion. */
 @property (nonatomic, readonly, copy) NSSet <NSString *> *_Nullable registeredPrefixes;
 
+@property (nonatomic, assign) BOOL alwaysEnableRightButton;
 /**
  Registers any string prefix for autocompletion detection, like for user mentions or hashtags autocompletion.
  The prefix must be valid string (i.e: '@', '#', '\', and so on).
