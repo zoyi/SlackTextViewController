@@ -766,46 +766,25 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
 
 - (void)textDidUpdate:(BOOL)animated
 {
-    if (self.isTextInputbarHidden) {
-        return;
-    }
-    
-    CGFloat inputbarHeight = _textInputbar.appropriateHeight;
-    
-    _textInputbar.rightButton.enabled = [self canPressRightButton];
-    _textInputbar.editorRightButton.enabled = [self canPressRightButton];
-    
-    if (inputbarHeight != self.textInputbarHC.constant)
-    {
-        CGFloat inputBarHeightDelta = inputbarHeight - self.textInputbarHC.constant;
-        CGPoint newOffset = CGPointMake(0, self.scrollViewProxy.contentOffset.y + inputBarHeightDelta);
-        self.textInputbarHC.constant = inputbarHeight;
-        self.scrollViewHC.constant = [self slk_appropriateScrollViewHeight];
-        
-        if (animated) {
-            
-            BOOL bounces = self.bounces && [self.textView isFirstResponder];
-            
-            __weak typeof(self) weakSelf = self;
-            
-            [self.view slk_animateLayoutIfNeededWithBounce:bounces
-                                                   options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionLayoutSubviews|UIViewAnimationOptionBeginFromCurrentState
-                                                animations:^{
-                                                    if (!self.isInverted) {
-                                                        self.scrollViewProxy.contentOffset = newOffset;
-                                                    }
-                                                    if (weakSelf.textInputbar.isEditing) {
-                                                        [weakSelf.textView slk_scrollToCaretPositonAnimated:NO];
-                                                    }
-                                                }];
-        }
-        else {
-            [self.view layoutIfNeeded];
-        }
-    }
-    
-    // Toggles auto-correction if requiered
-    [self slk_enableTypingSuggestionIfNeeded];
+  if (self.isTextInputbarHidden) {
+    return;
+  }
+  
+  CGFloat inputbarHeight = _textInputbar.appropriateHeight;
+  
+  _textInputbar.rightButton.enabled = [self canPressRightButton];
+  _textInputbar.editorRightButton.enabled = [self canPressRightButton];
+  
+  if (inputbarHeight != self.textInputbarHC.constant)
+  {
+    CGFloat inputBarHeightDelta = inputbarHeight - self.textInputbarHC.constant;
+    self.textInputbarHC.constant = inputbarHeight;
+    self.scrollViewHC.constant = [self slk_appropriateScrollViewHeight];
+    [self.view layoutIfNeeded];
+  }
+  
+  // Toggles auto-correction if requiered
+  [self slk_enableTypingSuggestionIfNeeded];
 }
 
 - (void)textSelectionDidChange
