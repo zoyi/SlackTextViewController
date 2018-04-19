@@ -1500,7 +1500,9 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
     
     void (^animations)() = ^void() {
         // Scrolls to bottom only if the keyboard is about to show.
-        if (self.shouldScrollToBottomAfterKeyboardShows && self.keyboardStatus == SLKKeyboardStatusWillShow) {
+        if (self.shouldScrollToBottomAfterKeyboardShows &&
+            self.keyboardStatus == SLKKeyboardStatusWillShow &&
+            [self.textView isFirstResponder]) { //scrollDown only if first responder is textView
             if (self.isInverted) {
                 [scrollView slk_scrollToTopAnimated:YES];
             }
