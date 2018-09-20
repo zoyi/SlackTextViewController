@@ -8,30 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		2F0E1D8DBCEA48E44AE1C143 /* libPods-SnapshotTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6327B11F9C471674A5F8BEBC /* libPods-SnapshotTests.a */; };
-		F52253811CBE2F85002EECA9 /* SLKInputAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = F522536B1CBE2F85002EECA9 /* SLKInputAccessoryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F52253811CBE2F85002EECA9 /* SLKInputAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = F522536B1CBE2F85002EECA9 /* SLKInputAccessoryView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F52253821CBE2F85002EECA9 /* SLKInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F522536C1CBE2F85002EECA9 /* SLKInputAccessoryView.m */; };
-		F52253831CBE2F85002EECA9 /* SLKTextInput.h in Headers */ = {isa = PBXBuildFile; fileRef = F522536D1CBE2F85002EECA9 /* SLKTextInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F52253831CBE2F85002EECA9 /* SLKTextInput.h in Headers */ = {isa = PBXBuildFile; fileRef = F522536D1CBE2F85002EECA9 /* SLKTextInput.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F52253841CBE2F85002EECA9 /* SLKTextInput+Implementation.m in Sources */ = {isa = PBXBuildFile; fileRef = F522536E1CBE2F85002EECA9 /* SLKTextInput+Implementation.m */; };
-		F52253851CBE2F85002EECA9 /* SLKTextInputbar.h in Headers */ = {isa = PBXBuildFile; fileRef = F522536F1CBE2F85002EECA9 /* SLKTextInputbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F52253851CBE2F85002EECA9 /* SLKTextInputbar.h in Headers */ = {isa = PBXBuildFile; fileRef = F522536F1CBE2F85002EECA9 /* SLKTextInputbar.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F52253861CBE2F85002EECA9 /* SLKTextInputbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F52253701CBE2F85002EECA9 /* SLKTextInputbar.m */; };
-		F52253871CBE2F85002EECA9 /* SLKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = F52253711CBE2F85002EECA9 /* SLKTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F52253871CBE2F85002EECA9 /* SLKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = F52253711CBE2F85002EECA9 /* SLKTextView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F52253881CBE2F85002EECA9 /* SLKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F52253721CBE2F85002EECA9 /* SLKTextView.m */; };
-		F52253891CBE2F85002EECA9 /* SLKTextView+SLKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F52253731CBE2F85002EECA9 /* SLKTextView+SLKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F52253891CBE2F85002EECA9 /* SLKTextView+SLKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F52253731CBE2F85002EECA9 /* SLKTextView+SLKAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F522538A1CBE2F85002EECA9 /* SLKTextView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F52253741CBE2F85002EECA9 /* SLKTextView+SLKAdditions.m */; };
 		F522538B1CBE2F85002EECA9 /* SLKTextViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F52253751CBE2F85002EECA9 /* SLKTextViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F522538C1CBE2F85002EECA9 /* SLKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52253761CBE2F85002EECA9 /* SLKTextViewController.m */; };
-		F522538D1CBE2F85002EECA9 /* SLKTypingIndicatorProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F52253771CBE2F85002EECA9 /* SLKTypingIndicatorProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F522538E1CBE2F85002EECA9 /* SLKTypingIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = F52253781CBE2F85002EECA9 /* SLKTypingIndicatorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F522538D1CBE2F85002EECA9 /* SLKTypingIndicatorProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = F52253771CBE2F85002EECA9 /* SLKTypingIndicatorProtocol.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F522538E1CBE2F85002EECA9 /* SLKTypingIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = F52253781CBE2F85002EECA9 /* SLKTypingIndicatorView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F522538F1CBE2F85002EECA9 /* SLKTypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = F52253791CBE2F85002EECA9 /* SLKTypingIndicatorView.m */; };
-		F52253901CBE2F85002EECA9 /* SLKUIConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = F522537A1CBE2F85002EECA9 /* SLKUIConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F52253911CBE2F85002EECA9 /* UIResponder+SLKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F522537B1CBE2F85002EECA9 /* UIResponder+SLKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F52253901CBE2F85002EECA9 /* SLKUIConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = F522537A1CBE2F85002EECA9 /* SLKUIConstants.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		F52253911CBE2F85002EECA9 /* UIResponder+SLKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F522537B1CBE2F85002EECA9 /* UIResponder+SLKAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F52253921CBE2F85002EECA9 /* UIResponder+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F522537C1CBE2F85002EECA9 /* UIResponder+SLKAdditions.m */; };
-		F52253931CBE2F85002EECA9 /* UIScrollView+SLKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F522537D1CBE2F85002EECA9 /* UIScrollView+SLKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F52253931CBE2F85002EECA9 /* UIScrollView+SLKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F522537D1CBE2F85002EECA9 /* UIScrollView+SLKAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F52253941CBE2F85002EECA9 /* UIScrollView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F522537E1CBE2F85002EECA9 /* UIScrollView+SLKAdditions.m */; };
-		F52253951CBE2F85002EECA9 /* UIView+SLKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F522537F1CBE2F85002EECA9 /* UIView+SLKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F52253951CBE2F85002EECA9 /* UIView+SLKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F522537F1CBE2F85002EECA9 /* UIView+SLKAdditions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F52253961CBE2F85002EECA9 /* UIView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F52253801CBE2F85002EECA9 /* UIView+SLKAdditions.m */; };
 		F559D04B1C4DAD5700FCBFFA /* AutoCompletionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F559D04A1C4DAD5700FCBFFA /* AutoCompletionTests.m */; };
-		F5A782781BD0CEF300EC230B /* SlackTextViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A782771BD0CEF300EC230B /* SlackTextViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5A782781BD0CEF300EC230B /* SlackTextViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A782771BD0CEF300EC230B /* SlackTextViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F5B4E7931C4DA053005CBBE0 /* CHSlackTextViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A782741BD0CEF300EC230B /* CHSlackTextViewController.framework */; };
 		F5B4E79C1C4DA098005CBBE0 /* FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B4E79B1C4DA098005CBBE0 /* FrameworkTests.m */; };
 		F5B4E7A61C4DA0B4005CBBE0 /* CHSlackTextViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A782741BD0CEF300EC230B /* CHSlackTextViewController.framework */; };
@@ -342,6 +342,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F522538B1CBE2F85002EECA9 /* SLKTextViewController.h in Headers */,
 				F52253811CBE2F85002EECA9 /* SLKInputAccessoryView.h in Headers */,
 				F5A782781BD0CEF300EC230B /* SlackTextViewController.h in Headers */,
 				F52253831CBE2F85002EECA9 /* SLKTextInput.h in Headers */,
@@ -350,7 +351,6 @@
 				F52253901CBE2F85002EECA9 /* SLKUIConstants.h in Headers */,
 				F52253911CBE2F85002EECA9 /* UIResponder+SLKAdditions.h in Headers */,
 				F52253891CBE2F85002EECA9 /* SLKTextView+SLKAdditions.h in Headers */,
-				F522538B1CBE2F85002EECA9 /* SLKTextViewController.h in Headers */,
 				F52253931CBE2F85002EECA9 /* UIScrollView+SLKAdditions.h in Headers */,
 				F522538D1CBE2F85002EECA9 /* SLKTypingIndicatorProtocol.h in Headers */,
 				F52253951CBE2F85002EECA9 /* UIView+SLKAdditions.h in Headers */,
