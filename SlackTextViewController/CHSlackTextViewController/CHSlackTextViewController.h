@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-FOUNDATION_EXPORT double SlackTextViewControllerVersionNumber;
-FOUNDATION_EXPORT const unsigned char SlackTextViewControllerVersionString[];
+FOUNDATION_EXPORT double CHSlackTextViewControllerVersionNumber;
+FOUNDATION_EXPORT const unsigned char CHSlackTextViewControllerVersionString[];
 
 #import <CHSlackTextViewController/SLKTextViewController.h>
 #import <CHSlackTextViewController/SLKTextView.h>

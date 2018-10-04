@@ -31,7 +31,7 @@
 		F52253951CBE2F85002EECA9 /* UIView+SLKAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = F522537F1CBE2F85002EECA9 /* UIView+SLKAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F52253961CBE2F85002EECA9 /* UIView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F52253801CBE2F85002EECA9 /* UIView+SLKAdditions.m */; };
 		F559D04B1C4DAD5700FCBFFA /* AutoCompletionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F559D04A1C4DAD5700FCBFFA /* AutoCompletionTests.m */; };
-		F5A782781BD0CEF300EC230B /* SlackTextViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A782771BD0CEF300EC230B /* SlackTextViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F5A782781BD0CEF300EC230B /* CHSlackTextViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F5A782771BD0CEF300EC230B /* CHSlackTextViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F5B4E7931C4DA053005CBBE0 /* CHSlackTextViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A782741BD0CEF300EC230B /* CHSlackTextViewController.framework */; };
 		F5B4E79C1C4DA098005CBBE0 /* FrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B4E79B1C4DA098005CBBE0 /* FrameworkTests.m */; };
 		F5B4E7A61C4DA0B4005CBBE0 /* CHSlackTextViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A782741BD0CEF300EC230B /* CHSlackTextViewController.framework */; };
@@ -101,7 +101,7 @@
 		F52253801CBE2F85002EECA9 /* UIView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SLKAdditions.m"; sourceTree = "<group>"; };
 		F559D04A1C4DAD5700FCBFFA /* AutoCompletionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCompletionTests.m; sourceTree = "<group>"; };
 		F5A782741BD0CEF300EC230B /* CHSlackTextViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CHSlackTextViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5A782771BD0CEF300EC230B /* SlackTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlackTextViewController.h; sourceTree = "<group>"; };
+		F5A782771BD0CEF300EC230B /* CHSlackTextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHSlackTextViewController.h; sourceTree = "<group>"; };
 		F5A782791BD0CEF400EC230B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5B4E78E1C4DA053005CBBE0 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B4E7921C4DA053005CBBE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		F5A7826A1BD0CEF300EC230B = {
 			isa = PBXGroup;
 			children = (
-				F5A782761BD0CEF300EC230B /* SlackTextViewController */,
+				F5A782761BD0CEF300EC230B /* CHSlackTextViewController */,
 				F5B4E78F1C4DA053005CBBE0 /* UnitTests */,
 				F5B4E7A21C4DA0B4005CBBE0 /* SnapshotTests */,
 				F5B4E7B11C4DA0BC005CBBE0 /* UITests */,
@@ -218,14 +218,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F5A782761BD0CEF300EC230B /* SlackTextViewController */ = {
+		F5A782761BD0CEF300EC230B /* CHSlackTextViewController */ = {
 			isa = PBXGroup;
 			children = (
-				F5A782771BD0CEF300EC230B /* SlackTextViewController.h */,
+				F5A782771BD0CEF300EC230B /* CHSlackTextViewController.h */,
 				F5A7828F1BD0CF1D00EC230B /* Source */,
 				F5A782791BD0CEF400EC230B /* Info.plist */,
 			);
-			path = SlackTextViewController;
+			path = CHSlackTextViewController;
 			sourceTree = "<group>";
 		};
 		F5A7828F1BD0CF1D00EC230B /* Source */ = {
@@ -343,7 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F52253811CBE2F85002EECA9 /* SLKInputAccessoryView.h in Headers */,
-				F5A782781BD0CEF300EC230B /* SlackTextViewController.h in Headers */,
+				F5A782781BD0CEF300EC230B /* CHSlackTextViewController.h in Headers */,
 				F52253831CBE2F85002EECA9 /* SLKTextInput.h in Headers */,
 				F52253871CBE2F85002EECA9 /* SLKTextView.h in Headers */,
 				F522538E1CBE2F85002EECA9 /* SLKTypingIndicatorView.h in Headers */,
@@ -476,10 +476,11 @@
 					};
 					F5B4E8051C4DA335005CBBE0 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 8278Q64QFC;
 					};
 				};
 			};
-			buildConfigurationList = F5A7826E1BD0CEF300EC230B /* Build configuration list for PBXProject "SlackTextViewController" */;
+			buildConfigurationList = F5A7826E1BD0CEF300EC230B /* Build configuration list for PBXProject "CHSlackTextViewController" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -767,7 +768,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SlackTextViewController/Info.plist;
+				INFOPLIST_FILE = CHSlackTextViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.slack.SlackTextViewController;
@@ -783,7 +784,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SlackTextViewController/Info.plist;
+				INFOPLIST_FILE = CHSlackTextViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.slack.SlackTextViewController;
@@ -865,6 +866,7 @@
 		F5B4E81B1C4DA335005CBBE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 8278Q64QFC;
 				INFOPLIST_FILE = HostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -876,6 +878,7 @@
 		F5B4E81C1C4DA335005CBBE0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 8278Q64QFC;
 				INFOPLIST_FILE = HostApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -887,7 +890,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F5A7826E1BD0CEF300EC230B /* Build configuration list for PBXProject "SlackTextViewController" */ = {
+		F5A7826E1BD0CEF300EC230B /* Build configuration list for PBXProject "CHSlackTextViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F5A782861BD0CEF400EC230B /* Debug */,
