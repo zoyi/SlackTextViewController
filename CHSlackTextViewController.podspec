@@ -1,4 +1,4 @@
-@version = "1.10.23"
+@version = "1.10.26"
 
 Pod::Spec.new do |s|
   s.name         		= "CHSlackTextViewController"

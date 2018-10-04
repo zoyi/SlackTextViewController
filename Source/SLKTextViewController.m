@@ -1460,12 +1460,12 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         return;
     }
 
-    BOOL shouldUpdateOffset = self.keyboardHC.constant == self.textInputBarBC &&
-      self.menuAccesoryView == nil;
-    if (status == SLKKeyboardStatusWillShow && shouldUpdateOffset) {
-        CGFloat offset = SLK_IS_IPHONE6PLUS ? 231 : 221;
-        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + offset)];
-    }
+//    BOOL shouldUpdateOffset = self.keyboardHC.constant == self.textInputBarBC &&
+//      self.menuAccesoryView == nil;
+//    if (status == SLKKeyboardStatusWillShow && shouldUpdateOffset) {
+//        CGFloat offset = SLK_IS_IPHONE6PLUS ? 231 : 221;
+//        [self.tableView setContentOffset:CGPointMake(0, self.tableView.contentOffset.y + offset)];
+//    }
     
     // Programatically stops scrolling before updating the view constraints (to avoid scrolling glitch).
     if (status == SLKKeyboardStatusWillShow) {
