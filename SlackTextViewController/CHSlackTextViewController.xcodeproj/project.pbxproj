@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F0E1D8DBCEA48E44AE1C143 /* libPods-SnapshotTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6327B11F9C471674A5F8BEBC /* libPods-SnapshotTests.a */; };
+		65DA5022221A7C54004AAD2D /* KeyboardService.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DA5020221A7C54004AAD2D /* KeyboardService.h */; };
+		65DA5023221A7C54004AAD2D /* KeyboardService.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DA5021221A7C54004AAD2D /* KeyboardService.m */; };
 		F52253811CBE2F85002EECA9 /* SLKInputAccessoryView.h in Headers */ = {isa = PBXBuildFile; fileRef = F522536B1CBE2F85002EECA9 /* SLKInputAccessoryView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F52253821CBE2F85002EECA9 /* SLKInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F522536C1CBE2F85002EECA9 /* SLKInputAccessoryView.m */; };
 		F52253831CBE2F85002EECA9 /* SLKTextInput.h in Headers */ = {isa = PBXBuildFile; fileRef = F522536D1CBE2F85002EECA9 /* SLKTextInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,6 +77,8 @@
 
 /* Begin PBXFileReference section */
 		6327B11F9C471674A5F8BEBC /* libPods-SnapshotTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SnapshotTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		65DA5020221A7C54004AAD2D /* KeyboardService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardService.h; sourceTree = "<group>"; };
+		65DA5021221A7C54004AAD2D /* KeyboardService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardService.m; sourceTree = "<group>"; };
 		A6F4DB55302A979898CA257B /* Pods-SnapshotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotTests/Pods-SnapshotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CFFC0243895409AFFF7CC9F6 /* Pods-SnapshotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapshotTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapshotTests/Pods-SnapshotTests.release.xcconfig"; sourceTree = "<group>"; };
 		F522536B1CBE2F85002EECA9 /* SLKInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKInputAccessoryView.h; sourceTree = "<group>"; };
@@ -253,6 +257,8 @@
 				F522537E1CBE2F85002EECA9 /* UIScrollView+SLKAdditions.m */,
 				F522537F1CBE2F85002EECA9 /* UIView+SLKAdditions.h */,
 				F52253801CBE2F85002EECA9 /* UIView+SLKAdditions.m */,
+				65DA5020221A7C54004AAD2D /* KeyboardService.h */,
+				65DA5021221A7C54004AAD2D /* KeyboardService.m */,
 			);
 			name = Source;
 			path = ../../Source;
@@ -347,6 +353,7 @@
 				F52253831CBE2F85002EECA9 /* SLKTextInput.h in Headers */,
 				F52253871CBE2F85002EECA9 /* SLKTextView.h in Headers */,
 				F522538E1CBE2F85002EECA9 /* SLKTypingIndicatorView.h in Headers */,
+				65DA5022221A7C54004AAD2D /* KeyboardService.h in Headers */,
 				F52253901CBE2F85002EECA9 /* SLKUIConstants.h in Headers */,
 				F52253911CBE2F85002EECA9 /* UIResponder+SLKAdditions.h in Headers */,
 				F52253891CBE2F85002EECA9 /* SLKTextView+SLKAdditions.h in Headers */,
@@ -584,6 +591,7 @@
 				F522538F1CBE2F85002EECA9 /* SLKTypingIndicatorView.m in Sources */,
 				F52253921CBE2F85002EECA9 /* UIResponder+SLKAdditions.m in Sources */,
 				F52253841CBE2F85002EECA9 /* SLKTextInput+Implementation.m in Sources */,
+				65DA5023221A7C54004AAD2D /* KeyboardService.m in Sources */,
 				F522538A1CBE2F85002EECA9 /* SLKTextView+SLKAdditions.m in Sources */,
 				F52253861CBE2F85002EECA9 /* SLKTextInputbar.m in Sources */,
 				F52253881CBE2F85002EECA9 /* SLKTextView.m in Sources */,

@@ -11,6 +11,7 @@
 
 #import "UIResponder+SLKAdditions.h"
 #import "SLKUIConstants.h"
+#import "KeyboardService.h"
 
 /** Feature flagged while waiting to implement a more reliable technique. */
 #define SLKBottomPanningEnabled 0
@@ -473,11 +474,15 @@ CGFloat const SLKAutoCompletionViewDefaultHeight = 140.0;
         }
     }
 
-    CGFloat padding = SLK_IS_IPHONE6PLUS ? 231 : 221;
+    CGFloat padding = [[KeyboardService shared] keyboardHeight] + 5.f;
+    if (@available(iOS 11.0, *)) {
+      padding -= [[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom;
+    }
+  
     CGFloat height = self.menuAccesoryView == nil ? self.textInputBarBC : padding;
     // A bottom margin is required for iPhone X
     if (@available(iOS 11.0, *)) {
-        return self.view.safeAreaInsets.bottom + height + _bottomMargin;
+      return self.view.safeAreaInsets.bottom + height + _bottomMargin;
     }
     return height + _bottomMargin;
 }
